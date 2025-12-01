@@ -38,7 +38,7 @@
   input,
   textarea,
   select {
-    @apply rounded-xl border-accent/30 focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-all duration-200 bg-surface;
+    @apply rounded-md border-marron-claro/30 focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-all duration-200 bg-surface;
   }
 }
 

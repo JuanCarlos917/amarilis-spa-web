@@ -2,6 +2,7 @@ import React, { useEffect, useState, useMemo } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Check, Sparkles } from 'lucide-react';
 import api from '../../api/axios';
+import ServiceFilterCategory from '../../components/ServiceFilterCategory';
 
 // Category Icon Mapping (Emojis as requested for premium feel)
 const CATEGORY_ICONS = {
@@ -78,24 +79,13 @@ const Services = () => {
                     </p>
                 </div>
 
-                {/* Dynamic Category Tabs (Horizontal Scroll) */}
-                <div className="relative mb-12">
-                    <div className="flex overflow-x-auto gap-4 pb-4 scrollbar-hide snap-x justify-start md:justify-center">
-                        {categories.map((cat) => (
-                            <button
-                                key={cat}
-                                onClick={() => setActiveCategory(cat)}
-                                className={`snap-center shrink-0 px-6 py-3 rounded-full text-sm font-medium transition-all duration-300 flex items-center gap-2 border ${activeCategory === cat
-                                    ? 'bg-primary text-white border-primary shadow-lg transform scale-105'
-                                    : 'bg-surface-light dark:bg-surface-dark text-text-light dark:text-text-dark border-gray-200 dark:border-gray-700 hover:border-primary/50'
-                                    }`}
-                            >
-                                <span className="text-lg">{CATEGORY_ICONS[cat] || CATEGORY_ICONS['Otros']}</span>
-                                <span>{cat === 'All' ? 'Todos' : cat}</span>
-                            </button>
-                        ))}
-                    </div>
-                </div>
+                {/* Dynamic Category Tabs (Refactored) */}
+                <ServiceFilterCategory
+                    categories={categories}
+                    activeCategory={activeCategory}
+                    onCategoryChange={setActiveCategory}
+                    icons={CATEGORY_ICONS}
+                />
 
                 {loading ? (
                     <div className="flex justify-center items-center h-64">
