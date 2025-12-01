@@ -8,8 +8,8 @@ const StickyBookingBtn = () => {
 
     useEffect(() => {
         const handleScroll = () => {
-            // Show button after scrolling down 100px
-            if (window.scrollY > 100) {
+            // Show button after scrolling down 50px
+            if (window.scrollY > 50) {
                 setIsVisible(true);
             } else {
                 setIsVisible(false);
@@ -28,7 +28,7 @@ const StickyBookingBtn = () => {
                     animate={{ y: 0, opacity: 1 }}
                     exit={{ y: 100, opacity: 0 }}
                     transition={{ type: "spring", stiffness: 260, damping: 20 }}
-                    className="fixed bottom-4 left-4 right-4 z-50 md:hidden flex gap-3"
+                    className="fixed bottom-4 left-4 right-4 z-50 flex md:hidden gap-3"
                 >
                     {/* WhatsApp Button (Quick Question) */}
                     <a
